@@ -103,6 +103,17 @@ async def add_speciality(speciality: str):
     except ResourceNotFound:
         raise HTTPException(status_code=404, detail="specialities document not found")
     
+# -------- deleting a doctor ---------- #
+@app.delete("/delete_doctor")
+async def delete_doctor(doctor_id: str):
+    try: 
+        if doctor_id not in db_asone:
+            raise HTTPException(status_code=404, detail="doctor not found, cannot be removed")
+        doc= db_asone[doctor_id]
+        db_asone.delete(doc)
+        return JSONResponse(content={"message": "doctor deleted successfully"}, headers={"Access-Control-Allow-Origin": "*"})
+    except ResourceNotFound:
+        raise HTTPException(status_code=404, detail="doctor not found, cannot be removed")
 
 # -------- add a doctor ---------- #
 
