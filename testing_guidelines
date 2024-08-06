@@ -1,0 +1,25 @@
+swagger files(local on port 8000) http://127.0.0.1:8000/docs
+running the server command: uvicorn main:app --reload
+
+replace CONFIG by your local couchdb in the following format: 
+        'couchdb_url': 'http://username:password@127.0.0.1:port(usually 5984)',
+also in the config file add the db you are working with like this
+        'db_asone':'name of the db'
+
+so overall config will look like the followign
+
+CONFIG={
+
+        'couchdb_url': 'http://username:password@127.0.0.1:port(usually 5984)',
+        'db_asone':'name of the db'
+}
+
+specialties document structure: 
+{
+  "_id": "asone:code:specialite",
+  "_rev": "8-9009178f4263e4a4e821b32d21066744",
+  "specialites": [
+    "osswaaaaaaaaaaa",
+    "new specialty"
+  ]
+}
